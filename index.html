@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amarah Cleanse Programs</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: #e8e8e8;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 40px;
+padding: 40px 20px;
+font-family: ‘DM Sans’, sans-serif;
+}
+
+/* Card container */
+.program-card {
+width: 900px;
+background: #fefdfb;
+border-radius: 20px;
+padding: 50px;
+box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+
+/* Header */
+.header {
+text-align: center;
+margin-bottom: 35px;
+padding-bottom: 25px;
+border-bottom: 2px solid rgba(196,154,62,0.2);
+}
+
+.logo {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+margin-bottom: 14px;
+}
+
+.logo-icon {
+width: 22px;
+height: 22px;
+}
+
+.logo-icon svg {
+width: 100%;
+height: 100%;
+fill: #5a6b4d;
+}
+
+.logo-text {
+font-weight: 800;
+font-size: 14px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: #2a3020;
+}
+
+.program-badge {
+display: inline-block;
+background: linear-gradient(135deg, #c49a3e 0%, #d4af50 100%);
+color: white;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 8px 20px;
+border-radius: 20px;
+margin-bottom: 16px;
+}
+
+.program-title {
+font-family: ‘Playfair Display’, serif;
+font-size: 48px;
+font-weight: 700;
+color: #2a3020;
+margin-bottom: 10px;
+line-height: 1;
+}
+
+.program-title span {
+background: linear-gradient(135deg, #c49a3e 0%, #d4af50 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+
+.program-subtitle {
+font-size: 18px;
+color: #6a7a5d;
+font-weight: 500;
+}
+
+/* What’s included section */
+.whats-included {
+background: rgba(196,154,62,0.08);
+border-left: 3px solid #c49a3e;
+padding: 20px 24px;
+margin-bottom: 30px;
+border-radius: 0 10px 10px 0;
+}
+
+.section-title {
+font-size: 13px;
+font-weight: 800;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #c49a3e;
+margin-bottom: 12px;
+}
+
+.included-items {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+
+.included-item {
+display: flex;
+align-items: center;
+gap: 8px;
+font-size: 14px;
+color: #4a5a3d;
+}
+
+.included-icon {
+font-size: 16px;
+}
+
+/* Daily schedule */
+.schedule {
+margin-bottom: 30px;
+}
+
+.day-header {
+background: linear-gradient(135deg, #2a3020 0%, #3a4030 100%);
+color: white;
+padding: 14px 20px;
+border-radius: 10px;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 0.05em;
+margin-bottom: 16px;
+margin-top: 20px;
+}
+
+.day-header:first-child {
+margin-top: 0;
+}
+
+.juice-time {
+display: grid;
+grid-template-columns: 120px 1fr;
+gap: 20px;
+padding: 18px 0;
+border-bottom: 1px solid rgba(196,154,62,0.15);
+}
+
+.juice-time:last-child {
+border-bottom: none;
+}
+
+.time-slot {
+display: flex;
+flex-direction: column;
+}
+
+.time {
+font-size: 16px;
+font-weight: 700;
+color: #c49a3e;
+margin-bottom: 4px;
+}
+
+.time-label {
+font-size: 11px;
+color: #8a9a7d;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+
+.juice-details {
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.juice-name {
+font-size: 16px;
+font-weight: 700;
+color: #2a3020;
+}
+
+.juice-purpose {
+font-size: 13px;
+color: #6a7a5d;
+line-height: 1.4;
+}
+
+.juice-ingredients {
+font-size: 11px;
+color: #8a9a7d;
+font-style: italic;
+}
+
+/* Guidelines section */
+.guidelines {
+background: #ffffff;
+border: 2px solid #f0ede5;
+border-radius: 12px;
+padding: 24px;
+margin-bottom: 20px;
+}
+
+.guidelines-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+margin-top: 14px;
+}
+
+.guideline-item {
+display: flex;
+align-items: start;
+gap: 10px;
+}
+
+.guideline-icon {
+font-size: 18px;
+flex-shrink: 0;
+margin-top: 2px;
+}
+
+.guideline-text {
+font-size: 13px;
+color: #4a5a3d;
+line-height: 1.4;
+}
+
+/* Price section */
+.price-section {
+text-align: center;
+padding: 24px;
+background: linear-gradient(135deg, rgba(196,154,62,0.1) 0%, rgba(196,154,62,0.05) 100%);
+border-radius: 12px;
+}
+
+.price {
+font-family: ‘Playfair Display’, serif;
+font-size: 42px;
+font-weight: 700;
+color: #c49a3e;
+margin-bottom: 8px;
+}
+
+.price-detail {
+font-size: 14px;
+color: #6a7a5d;
+margin-bottom: 16px;
+}
+
+.order-cta {
+background: linear-gradient(135deg, #2a3020 0%, #3a4030 100%);
+color: white;
+font-size: 14px;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+padding: 14px 36px;
+border-radius: 8px;
+border: none;
+cursor: pointer;
+}
+
+/* Footer */
+.footer {
+text-align: center;
+margin-top: 20px;
+padding-top: 20px;
+border-top: 2px solid rgba(196,154,62,0.2);
+font-size: 13px;
+color: #8a9a7d;
+}
+
+.footer-handle {
+font-weight: 700;
+color: #c49a3e;
+}
+
+.print-note {
+text-align: center;
+margin-top: 20px;
+font-size: 12px;
+color: #999;
+max-width: 900px;
+}
+
+@media print {
+body { background: white; padding: 0; }
+.program-card { box-shadow: none; page-break-after: always; }
+.print-note { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- 1-DAY RESET PROGRAM -->
+
+<div class="program-card">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C12 2 9 5 9 8C9 10 10.5 11.5 12 11.5C13.5 11.5 15 10 15 8C15 5 12 2 12 2Z"/>
+          <path d="M7 8C7 8 5 10 5 12C5 13.5 6 14.5 7 14.5C8 14.5 9 13.5 9 12C9 10 7 8 7 8Z"/>
+          <path d="M17 8C17 8 15 10 15 12C15 13.5 16 14.5 17 14.5C18 14.5 19 13.5 19 12C19 10 17 8 17 8Z"/>
+        </svg>
+      </div>
+      <div class="logo-text">AMARAH</div>
+    </div>
+    <div class="program-badge">1-Day Program</div>
+    <div class="program-title">THE <span>RESET</span></div>
+    <div class="program-subtitle">Gentle detox. Clear mind. Fresh start.</div>
+  </div>
+
+  <div class="whats-included">
+    <div class="section-title">What's Included</div>
+    <div class="included-items">
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>6 cold-pressed juices (250ml each)</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>1 wellness shot</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>Preparation guide</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>Daily schedule card</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule">
+    <div class="section-title">Your Daily Schedule</div>
+
+```
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 AM</div>
+    <div class="time-label">Wake Up</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Shot</div>
+    <div class="juice-purpose">Jumpstart metabolism & reduce inflammation on empty stomach</div>
+    <div class="juice-ingredients">Carrot, orange, turmeric, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">9:00 AM</div>
+    <div class="time-label">Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Root</div>
+    <div class="juice-purpose">Energize with natural sugars, boost nitric oxide for circulation</div>
+    <div class="juice-ingredients">Beetroot, carrot, orange, ginger, lemon</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">11:30 AM</div>
+    <div class="time-label">Mid-Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Alkalizing greens flush toxins, support liver function</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">2:00 PM</div>
+    <div class="time-label">Lunch</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Crave Control</div>
+    <div class="juice-purpose">Fiber-rich, keeps you full, balances blood sugar through afternoon</div>
+    <div class="juice-ingredients">Green apple, cucumber, carrot, cinnamon, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">4:30 PM</div>
+    <div class="time-label">Afternoon</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Hydrate</div>
+    <div class="juice-purpose">Electrolyte boost, cooling hydration, enzyme support for digestion</div>
+    <div class="juice-ingredients">Coconut water, cucumber, pineapple, lime, mint</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 PM</div>
+    <div class="time-label">Evening</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Light, cleansing finish to support overnight detoxification</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="guidelines">
+    <div class="section-title">Guidelines for Success</div>
+    <div class="guidelines-grid">
+      <div class="guideline-item">
+        <span class="guideline-icon">💧</span>
+        <span class="guideline-text">Drink 8+ glasses of water between juices</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🚫</span>
+        <span class="guideline-text">No caffeine, alcohol, or solid food during cleanse</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🧘</span>
+        <span class="guideline-text">Light movement only (yoga, walking, stretching)</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">😴</span>
+        <span class="guideline-text">Aim for 8+ hours of sleep to support detox</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🥗</span>
+        <span class="guideline-text">Day before: eat light (salads, fruits, veggies)</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🍎</span>
+        <span class="guideline-text">Day after: ease back in with light plant-based meals</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="price-section">
+    <div class="price">$48</div>
+    <div class="price-detail">All 6 juices + 1 shot · Fresh pressed · Delivered</div>
+    <button class="order-cta">Order Your Reset</button>
+  </div>
+
+  <div class="footer">
+    Questions? DM <span class="footer-handle">@drinkamarah</span> or text [Your Number]
+  </div>
+</div>
+
+<!-- 3-DAY RADIANCE PROGRAM -->
+
+<div class="program-card">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C12 2 9 5 9 8C9 10 10.5 11.5 12 11.5C13.5 11.5 15 10 15 8C15 5 12 2 12 2Z"/>
+          <path d="M7 8C7 8 5 10 5 12C5 13.5 6 14.5 7 14.5C8 14.5 9 13.5 9 12C9 10 7 8 7 8Z"/>
+          <path d="M17 8C17 8 15 10 15 12C15 13.5 16 14.5 17 14.5C18 14.5 19 13.5 19 12C19 10 17 8 17 8Z"/>
+        </svg>
+      </div>
+      <div class="logo-text">AMARAH</div>
+    </div>
+    <div class="program-badge">3-Day Program</div>
+    <div class="program-title">THE <span>RADIANCE</span></div>
+    <div class="program-subtitle">Deep reset. Glowing skin. Total transformation.</div>
+  </div>
+
+  <div class="whats-included">
+    <div class="section-title">What's Included</div>
+    <div class="included-items">
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>18 cold-pressed juices (250ml each)</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>3 wellness shots</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>Daily prep & success guide</span>
+      </div>
+      <div class="included-item">
+        <span class="included-icon">✓</span>
+        <span>Post-cleanse meal plan</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="schedule">
+    <div class="section-title">Your 3-Day Journey</div>
+
+```
+<!-- DAY 1 -->
+<div class="day-header">Day 1 · Release (Letting Go)</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 AM</div>
+    <div class="time-label">Wake Up</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Shot</div>
+    <div class="juice-purpose">Anti-inflammatory kickstart, prep digestive system</div>
+    <div class="juice-ingredients">Carrot, orange, turmeric, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">9:00 AM</div>
+    <div class="time-label">Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Root</div>
+    <div class="juice-purpose">Energy boost, support liver detox pathways</div>
+    <div class="juice-ingredients">Beetroot, carrot, orange, ginger, lemon</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">11:30 AM</div>
+    <div class="time-label">Mid-Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Deep cleanse, alkalizing greens flush toxins</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">2:00 PM</div>
+    <div class="time-label">Lunch</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Crave Control</div>
+    <div class="juice-purpose">Satisfying, fiber-rich, blood sugar balance</div>
+    <div class="juice-ingredients">Green apple, cucumber, carrot, cinnamon, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">4:30 PM</div>
+    <div class="time-label">Afternoon</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Hydrate</div>
+    <div class="juice-purpose">Rehydrate, electrolyte balance, skin plumping</div>
+    <div class="juice-ingredients">Coconut water, cucumber, pineapple, lime, mint</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 PM</div>
+    <div class="time-label">Evening</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Light finish, support overnight liver detox</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day-header">Day 2 · Restore (Deep Healing)</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 AM</div>
+    <div class="time-label">Wake Up</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Gut Reset Shot</div>
+    <div class="juice-purpose">Soothe digestive system, reduce inflammation</div>
+    <div class="juice-ingredients">Aloe, citrus, ginger, apple, fennel</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">9:00 AM</div>
+    <div class="time-label">Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Hydrate</div>
+    <div class="juice-purpose">Gentle morning start, maximum hydration</div>
+    <div class="juice-ingredients">Coconut water, cucumber, pineapple, lime, mint</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">11:30 AM</div>
+    <div class="time-label">Mid-Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Peak detox day, greens pull toxins from cells</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">2:00 PM</div>
+    <div class="time-label">Lunch</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Root</div>
+    <div class="juice-purpose">Grounding, nutrient-dense, sustainable energy</div>
+    <div class="juice-ingredients">Beetroot, carrot, orange, ginger, lemon</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">4:30 PM</div>
+    <div class="time-label">Afternoon</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Crave Control</div>
+    <div class="juice-purpose">Curb cravings on hardest day, blood sugar stability</div>
+    <div class="juice-ingredients">Green apple, cucumber, carrot, cinnamon, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 PM</div>
+    <div class="time-label">Evening</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Complete the reset, cleansing sleep preparation</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day-header">Day 3 · Radiate (Glow Emerges)</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 AM</div>
+    <div class="time-label">Wake Up</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox Shot</div>
+    <div class="juice-purpose">Final push, powerful liver + lymph cleanse</div>
+    <div class="juice-ingredients">Celery, ginger, lemon</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">9:00 AM</div>
+    <div class="time-label">Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Root</div>
+    <div class="juice-purpose">Celebrate completion, skin-glow nutrients</div>
+    <div class="juice-ingredients">Beetroot, carrot, orange, ginger, lemon</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">11:30 AM</div>
+    <div class="time-label">Mid-Morning</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Hydrate</div>
+    <div class="juice-purpose">Plump skin cells, prepare for re-entry</div>
+    <div class="juice-ingredients">Coconut water, cucumber, pineapple, lime, mint</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">2:00 PM</div>
+    <div class="time-label">Lunch</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Crave Control</div>
+    <div class="juice-purpose">Stable energy, gentle fiber introduction</div>
+    <div class="juice-ingredients">Green apple, cucumber, carrot, cinnamon, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">4:30 PM</div>
+    <div class="time-label">Afternoon</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Detox</div>
+    <div class="juice-purpose">Final cleanse, lock in the glow</div>
+    <div class="juice-ingredients">Green apple, celery, cucumber, lemon, ginger</div>
+  </div>
+</div>
+
+<div class="juice-time">
+  <div class="time-slot">
+    <div class="time">7:00 PM</div>
+    <div class="time-label">Evening</div>
+  </div>
+  <div class="juice-details">
+    <div class="juice-name">Golden Root</div>
+    <div class="juice-purpose">Nourishing finish, celebrate your transformation</div>
+    <div class="juice-ingredients">Beetroot, carrot, orange, ginger, lemon</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="guidelines">
+    <div class="section-title">Guidelines for Success</div>
+    <div class="guidelines-grid">
+      <div class="guideline-item">
+        <span class="guideline-icon">💧</span>
+        <span class="guideline-text">Drink 10+ glasses of water daily between juices</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🚫</span>
+        <span class="guideline-text">No caffeine, alcohol, or solid food for all 3 days</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🧘</span>
+        <span class="guideline-text">Rest more than usual - gentle walks, yoga, meditation</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">😴</span>
+        <span class="guideline-text">Sleep 8-9 hours nightly to maximize detox benefits</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🥗</span>
+        <span class="guideline-text">Days 1-2 before: eliminate processed foods, meat, dairy</span>
+      </div>
+      <div class="guideline-item">
+        <span class="guideline-icon">🍎</span>
+        <span class="guideline-text">Days 1-2 after: gentle plant-based meals only</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="price-section">
+    <div class="price">$135</div>
+    <div class="price-detail">All 18 juices + 3 shots · Fresh pressed daily · Free delivery · $45/day</div>
+    <button class="order-cta">Order Your Radiance</button>
+  </div>
+
+  <div class="footer">
+    Questions? DM <span class="footer-handle">@drinkamarah</span> or text [Your Number]
+  </div>
+</div>
+
+<div class="print-note">
+  <strong>TO PRINT:</strong> File → Print → Each program is one page<br>
+  Print on cardstock for premium feel · Include with cleanse kits
+</div>
+
+</body>
+</html>
